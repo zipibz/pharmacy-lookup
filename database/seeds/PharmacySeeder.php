@@ -21,8 +21,8 @@ class PharmacySeeder extends Seeder
         $sth = $dbh->prepare(
             "INSERT INTO pharmacies (name, street, city, state, zip, latitude, longitude) VALUES (:name, :street, :city, :state, :zip, :latitude, :longitude)"
         );
-        
-        $csv = Reader::createFromPath('/var/www/database/seeds/pharmacies.csv', 'r')
+
+        $csv = Reader::createFromPath(base_path().'/database/seeds/pharmacies.csv', 'r')
             ->setHeaderOffset(0)
         ;
         

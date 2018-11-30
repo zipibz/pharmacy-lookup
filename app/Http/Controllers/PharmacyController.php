@@ -9,25 +9,12 @@ use Illuminate\Support\Facades\Validator;
 class PharmacyController extends Controller
 {
     /**
-     * Finds the closest pharmacy to the given latitude/longitude 
+     * Finds the closest pharmacy to the given latitude/longitude
      *
      * @param $latitude
      * @param $longitude
      */
     public function closest(Request $request, $latitude, $longitude) {
-
-        // $validator = Validator::make($request->all(), [
-        //     'latitude' => ['required','regex:^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)'], 
-        //     'longitude' => ['required','regex:\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$']
-        // ], [
-        //     'latitude.regex' => 'Latitude value appears to be incorrect format',
-        //     'longitude.regex' => 'Longitude value appears to be incorrect format'
-        // ]);
-        
-        // // Test validation
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors(), 404);
-        // }
 
         $query = Pharmacy::distance($latitude, $longitude);
         $asc = $query->orderBy('distance', 'ASC')->get();
@@ -44,7 +31,7 @@ class PharmacyController extends Controller
                     'zip' => $asc[0]->zip
                 ]
             ];
-            
+
         return response()->json($pharmacy, 200);
     }
 
