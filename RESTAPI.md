@@ -1,6 +1,6 @@
 # API Details
 
-`GET /pharmacy/latitude/{latitude}/longitude/{longitude}`
+`GET /pharmacies/latitude/{latitude}/longitude/{longitude}`
 
 Retrieve the closest pharmacy to the provided GPS coordinates.
 
@@ -14,7 +14,7 @@ Retrieve the closest pharmacy to the provided GPS coordinates.
 Below is an example of using the pharmacy-lookup API to retrieve the closest pharmacy to the provided GPS coordinates.
 ### Request URI
 
-`GET http://localhost:8000/api/pharmacy/latitude/38.825469/longitude/-94.507300`
+`GET http://localhost:8000/api/pharmacies/latitude/38.825469/longitude/-94.507300`
 
 ### Request Body
 An empty request body is needed for this GET request.
@@ -50,17 +50,14 @@ A successful response will yield a `200: OK` status
 | `zip`    | Zip code                     | Integer | 66209              |
 
 ## Error Responses
+These were not implemented.
 ### 404: Not Found
-```json
-{
-
-}
-```
 
 ### 422: Unprocessable Entity
 ```json
 {
-
+  "error": "INVALID_REQUEST",
+  "message": "Latitude entered is not within the bounds"
 }
 ```
 
