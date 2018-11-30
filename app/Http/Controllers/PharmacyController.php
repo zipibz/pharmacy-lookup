@@ -9,105 +9,28 @@ use Illuminate\Support\Facades\Validator;
 class PharmacyController extends Controller
 {
     /**
-     * Finds the closest pharmacy to the given latitude/longitude
+     * Finds the closest pharmacy to the provided latitude/longitude
      *
-     * @param $latitude
-     * @param $longitude
+     * @param $latitude The latitude of the users location
+     * @param $longitude The longitude of the users location
+     * @returns JSON representing the pharmacy that was found
      */
-    public function closest(Request $request, $latitude, $longitude) {
+    public function closest($latitude, $longitude) {
 
         $query = Pharmacy::distance($latitude, $longitude);
         $asc = $query->orderBy('distance', 'ASC')->get();
 
         $pharmacy = [
             'name' => $asc[0]->name,
-            'latitude' => $asc[0]->latitude,
-            'longitude' => $asc[0]->longitude,
-            'distance' => $asc[0]->distance,
+            'distance' => round($asc[0]->distance, 2),
             'address' => [
-                    'street' => $asc[0]->street,
-                    'city' => $asc[0]->city,
-                    'state' => $asc[0]->state,
-                    'zip' => $asc[0]->zip
-                ]
-            ];
+                'street' => $asc[0]->street,
+                'city' => $asc[0]->city,
+                'state' => $asc[0]->state,
+                'zip' => $asc[0]->zip
+            ]
+        ];
 
         return response()->json($pharmacy, 200);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

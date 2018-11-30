@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "47f1b6df-5c30-4d19-b810-da6ec39a6e35",
+		"name": "pharmacy-lookup",
+		"description": "An API to find the closest pharmacy to the provided GPS coordinates",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Closest Pharmacy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/api/pharmacies/latitude/38.825469/longitude/-94.507300",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pharmacies",
+						"latitude",
+						"38.825469",
+						"longitude",
+						"-94.507300"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8000/api/pharmacies/latitude/38.825469/longitude/-94.507300",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pharmacies",
+								"latitude",
+								"38.825469",
+								"longitude",
+								"-94.507300"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 30 Nov 2018 21:51:10 +0000"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 30 Nov 2018 21:51:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.1.19"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"AUBURN PHARMACY\",\n    \"distance\": 7.7,\n    \"address\": {\n        \"street\": \"13351 MISSION RD\",\n        \"city\": \"LEAWOOD\",\n        \"state\": \"KS\",\n        \"zip\": 66209\n    }\n}"
+				}
+			]
+		}
+	]
+}
